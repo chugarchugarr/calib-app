@@ -12,7 +12,7 @@ const pass = (message) => console.log(`✓ ${message}`)
 const assert = (condition, message) => condition ? pass(message) : fail(message)
 
 for (let id = 1; id <= 15; id += 1) {
-  assert(new RegExp(`(?:^|[,\\s])${id}:'`).test(source), `pattern ${String(id).padStart(2, '0')} is present`)
+  assert(new RegExp(`(?:^|[,{\\s])${id}:'`).test(source), `pattern ${String(id).padStart(2, '0')} is present`)
 }
 
 assert(source.includes("'artist'") && source.includes("'orphan'"), 'Artist/Orphan model is present')
