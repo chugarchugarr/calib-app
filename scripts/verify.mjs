@@ -19,8 +19,10 @@ assert(source.includes("'artist'") && source.includes("'orphan'"), 'Artist/Orpha
 assert(source.includes("supabase.from('profiles')"), 'profiles persistence is present')
 assert(source.includes("supabase.from('sessions')"), 'sessions persistence is present')
 assert(source.includes("supabase.from('projects')"), 'projects persistence is present')
-assert(source.includes('signInWithOtp'), 'account creation uses Supabase magic-link authentication')
-assert(source.includes('Account required from this point'), 'account gate follows the discovery reveal')
+assert(source.includes('signInWithOtp'), 'optional Supabase magic-link cloud sync is present')
+assert(source.includes('Enter Calib') && source.includes('Your discovery is already saved on this device.'), 'local entry is available immediately after discovery')
+assert(!source.includes('if(!user||!authUser)'), 'authentication does not block dashboard entry')
+assert(source.includes("save('calib:user'"), 'profile local persistence is present')
 assert(source.includes("save('calib:sessions'"), 'session local persistence is present')
 assert(source.includes("save('calib:projects'"), 'project local persistence is present')
 assert(source.includes('detectedPatterns') && source.includes('structuralPatterns') && source.includes('keywordPatterns'), 'deterministic pattern direction is present')
@@ -41,8 +43,8 @@ for (const [label, pattern] of forbidden) {
 }
 
 if (process.exitCode) {
-  console.error('\nCalib preview verification failed.')
+  console.error('\nCalib verification failed.')
   process.exit(process.exitCode)
 }
 
-console.log('\nCalib preview invariants verified.')
+console.log('\nCalib invariants verified.')
