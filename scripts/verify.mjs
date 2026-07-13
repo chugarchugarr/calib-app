@@ -27,6 +27,10 @@ assert(source.includes("save('calib:sessions'"), 'session local persistence is p
 assert(source.includes("save('calib:projects'"), 'project local persistence is present')
 assert(source.includes('detectedPatterns') && source.includes('structuralPatterns') && source.includes('keywordPatterns'), 'deterministic pattern direction is present')
 assert(source.includes('Future coaching belongs to human community'), 'human-community coaching direction is explicit')
+assert(source.includes('Just vibe and see what shows up') && source.includes('Start a new project'), 'sessions can be open or attached to a new project')
+assert(source.includes('A few words you will see here.'), 'Guide page is present')
+assert(!source.includes('% activation') && !source.includes('Top activation'), 'pseudo-precise activation percentages are absent')
+assert(source.includes('What started the movement today?') && source.includes('Something sparked something.'), 'Artist/Orphan language is grounded and explained')
 assert(css.includes('Instrument Serif') && css.includes('background-image:linear-gradient'), 'editorial serif and technical grid are present')
 assert(css.includes('--panel:#11110f') && css.includes('--orange:#e65f2b'), 'black operational panels and restrained orange actions are present')
 
